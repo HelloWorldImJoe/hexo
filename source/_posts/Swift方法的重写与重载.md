@@ -156,7 +156,38 @@ class ViewController: UIViewController {
     }
 }
 ```
-上面代码重写了UIViewController的`init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)`方法，编译器没有报错，运行没有问题，那么这个就可以跳过了。等等，下面的`required init?(coder aDecoder: NSCoder)`方法是什么鬼啊？Ok，先来说一下`required`这个修饰符，`required`修饰的方法要求子类**必须实现**，如果子类不实现，编译是不会通过的。那么问题又来了，我们平常用`ViewController`的时候也没有实现这个方法啊，程序跑的也很欢快啊，这是怎么回事呢？因为Swift构造方法的特点之一就是：**"如果子类没有定义任何 **Designated** 类型的构造方法，则默认继承父类所有的 **Designated** 构造方法"**。这下就明了吧，不是子类没有实现，只不过是继承了父类的实现罢了。那么接下来就要说一下UIView的构造方法了。再等等，可是为什么**重写了方法**之后就需要子类来实现了呢？答案还是在Swift构造方法的特点里：**如果子类重写了父类的某一构造方法，则默认不在继承父类所有的构造方法。对于Designated类型的构造方法，子类重写了哪些，哪些才能够被使用。对于Convenienve类型的构造方法，子类重写的其调用的Designated构造方法后会被自动继承。**这样一来UIViewController构造方法的重写就没有什么问题了。
+上面代码重写了UIViewController的`init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)`方法，编译器没有报错，运行没有问题，那么这个就可以跳过了。等等，下面的`required init?(coder aDecoder: NSCoder)`方法是什么鬼啊？Ok，先来说一下`required`这个修饰符，`required`修饰的方法要求子类**必须实现**，如果子类不实现，编译是不会通过的。那么问题又来了，我们平常用`ViewController`的时候也没有实现这个方法啊，程序跑的也很欢快啊，这是怎么回事呢？因为Swift构造方法的特点之一就是：**"如果子类没有定义任何 **Designated** 类型的构造方法，则默认继承父类所有的 **Designated** 构造方法"**。这下就明了吧，不是子类没有实现，只不过是继承了父类的实现罢了。那么接下来就要说一下UIView的构造方法了。再等等，可是为什么**重写了方法**之后就需要子类来实现了呢？答案还是在Swift构造方法的特点里：**如果子类重写了父类的某一构造方法，则默认不在继承父类所有的构造方法。对于Designated类型的构造方法，子类重写了哪些，哪些才能够被使用。对于Convenienve类型的构造方法，需要在子类的重写方法中调用其依赖的父类Designated构造方法，代码如下:**
+```
+class SuperClass: NSObject {
+    /// 父类convenience方法依赖的designated方法
+    init(name: String, word: String) {
+        super.init()
+    }
+    
+    convenience init(word: String) {
+        self.init(name: "wangzh", word: word)
+    }
+    
+}
+
+class SubClass: SuperClass {
+   
+    /// 重写父类的convenience方法
+    init(word: String) {
+        /// 调用父类convenience依赖的designed方法
+        super.init(name: "哈哈", word: "ha")
+        
+        /// 这种调用是不会被编译通过的
+        super.init(word: word)
+        
+    }
+    
+    func test() {
+        let subClass = SubClass.init(word: "哈哈")
+        print(subClass)
+    }
+}
+```
 ### UIView子类构造方法的重写与重载
 > UIView的构造方法其实就和UIViewController里面的差不多。可以这么说，UIKit里面构造方法的重写和重载都和上面说的UiViewController的差不多，这里就不多赘述了。
 
