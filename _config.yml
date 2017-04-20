@@ -97,8 +97,8 @@ avatar: /images/avatar.gif
 
 #### Comment
 duoshuo: 
-  short_name: wangzh    ## duoshuo short name.
+  short_name:    ## duoshuo short name.
 
 rss: YOUR_RSS_ADDRESS                    ## if any...
 
-baidu_analytics: 4567cdfc1e7302bc0cb47faf28557b48
+baidu_analytics:
