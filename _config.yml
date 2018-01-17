@@ -6,13 +6,13 @@
 title: 破廬
 subtitle: 獨善其身
 description: 
-author: DarrenW
+author: Darren
 language: zh-CN
 timezone:
 email: sdauwangzh@163.com
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://wzh.wiki
+url: http://wangzhihao.club
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
