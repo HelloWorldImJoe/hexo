@@ -1,5 +1,5 @@
 ---
-title: 'Swift中重写重载构造(初始化)方法'
+title: Swift中重写重载构造(初始化)方法
 date: 2016-12-28 23:33:32
 tags: Swift学习
 categories: iOS之路
@@ -122,7 +122,7 @@ invoke this method with a nil nib name, then this class' -loadView method will a
 name is the same as your view controller's class. If no such NIB in fact exists then you must either call
 -setView: before -view is invoked, or override the -loadView method to set up your views programatically.
 `public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)`
-    
+
 这段话的大体意思就是VC的`init()`是一个*Convenience*类型的构造方法，它会帮你把`public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)`方法的两个参数都设置成nil。也就是说，如果你要重载UIViewController的`init()`方法，就需要手动将上面方法的两个参数置为`nil`。修改后`init()`重载的代码如下：
 ```
 class ViewController: UIViewController { 
