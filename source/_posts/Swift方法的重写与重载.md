@@ -189,6 +189,7 @@ class SubClass: SuperClass {
 }
 ```
 ### UIView子类构造方法的重写与重载
+
 > UIView的构造方法其实就和UIViewController里面的差不多。可以这么说，UIKit里面构造方法的重写和重载都和上面说的UiViewController的差不多，这里就不多赘述了。
 
 
@@ -196,4 +197,4 @@ class SubClass: SuperClass {
 [珲少](https://yq.aliyun.com/articles/39484) 
 [tiborbodecs](https://theswiftdev.com/2015/08/05/swift-init-patterns/) 分享的文章
 
-原创作品，转载请注明出处：http://www.wzh.wiki
+原创作品，转载请注明出处：https://zhihaoo.wang

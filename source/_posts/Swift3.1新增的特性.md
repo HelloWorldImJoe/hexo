@@ -223,4 +223,4 @@ class A<T> {
 [泊学网](https://boxueio.com/)
 提供的博客
 
-原创作品，转载请注明出处：http://www.wzh.wiki
+原创作品，转载请注明出处：https://zhihaoo.wang
