@@ -195,6 +195,6 @@ class SubClass: SuperClass {
 
 ## 感谢：
 [珲少](https://yq.aliyun.com/articles/39484) 
-[tiborbodecs](https://theswiftdev.com/2015/08/05/swift-init-patterns/) 分享的文章
+分享的文章
 
 原创作品，转载请注明出处：https://zhihaoo.wang
