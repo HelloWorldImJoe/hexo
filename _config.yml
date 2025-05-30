@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 破廬
-subtitle: 獨善其身
+title: 至皓君的Blog
+subtitle: 穷则独善其身，达则兼济天下。
 description: 
 author: Joe
 language: zh-CN
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: hexadillax
+theme: fluid
 
 # Archives 默认值为2，这里都修改为1，相应页面就只会列出标题，而非全文
 ## 2: Enable pagination
