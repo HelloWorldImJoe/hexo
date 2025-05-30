@@ -90,16 +90,15 @@ menu:
 
 github: HelloWorldImW
 
-avatar: /images/logo.jpg
+background-root: /images/background/
+background: [ 1.jpg ]
+
+avatar: /images/avatar.jpg
 
 #### Comment
 duoshuo: 
   short_name:    ## duoshuo short name.
 
-feed:
-  type: atom
-  path: atom.xml
-  limit: false
-  icon: /images/logo.jpg
+rss: YOUR_RSS_ADDRESS                    ## if any...
 
 baidu_analytics:
