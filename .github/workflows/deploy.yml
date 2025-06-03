@@ -36,7 +36,11 @@ jobs:
           npm install
 
       - name: Deploy
+        env:
+          GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
         run: |
+          eval $(ssh-agent -s)
+          ssh-add ~/.ssh/id_rsa
           hexo clean
           hexo generate
           hexo deploy
