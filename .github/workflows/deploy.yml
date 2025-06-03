@@ -26,12 +26,13 @@ jobs:
           ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }}
         run: |
           mkdir -p ~/.ssh/
-          echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
+          echo "$ACTION_DEPLOY_KEY" | tee ~/.ssh/id_rsa
           chmod 700 ~/.ssh
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
           git config --global user.email "sdauwangzh@163.com"
           git config --global user.name "Joe"
+          ssh -o StrictHostKeyChecking=no -T git@github.com || true
           npm install hexo-cli -g
           npm install
 
