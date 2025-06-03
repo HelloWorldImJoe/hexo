@@ -1,8 +1,8 @@
 ---
 title: Swift3.1新增的特性
 date: 2017-04-13 23:03:25
-tags: Swift学习
-categories: iOS之路
+tags: Swift
+categories: iOS开发
 ---
 
 > Apple最近发布了Xcode8.3, 以及Swift的一个小版本3.1。 不过不要担心, Swift3.1和Swift3是兼容的,这不会给你的Swift3项目造成太多的麻烦。不幸的是, Xcode8.3无情的去掉了对Swift2.3的支持, 所以, 如果你的项目在使用3.0之前的版本，个人建议还是不要着急更新。
