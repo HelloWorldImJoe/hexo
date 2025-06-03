@@ -16,31 +16,25 @@ jobs:
           ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }}
         run: |
           mkdir -p ~/.ssh/
-          
-          printf "%s" "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
-          
+          echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
           chmod 700 ~/.ssh
           chmod 600 ~/.ssh/id_rsa
-          
-          ssh-keygen -y -f ~/.ssh/id_rsa || echo "Invalid key format"
-          ssh-keyscan -t rsa,ecdsa,ed25519 github.com >> ~/.ssh/known_hosts
-
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
           echo "--- SSH Debug ---"
           ssh -T -v git@github.com || true
+
 
       - name: Checkout source
         uses: actions/checkout@v2
         with:
           ref: master
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
           node-version: '23.11.0'
 
       - name: Setup Hexo
-        env:
-          ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }}
         run: |
           git config --global user.email "sdauwangzh@163.com"
           git config --global user.name "Joe"
