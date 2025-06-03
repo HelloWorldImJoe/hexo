@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '12'
+          node-version: '23.11.0'
 
       - name: Setup Hexo
         env:
@@ -38,4 +38,5 @@ jobs:
       - name: Deploy
         run: |
           hexo clean
+          hexo generate
           hexo deploy
