@@ -37,10 +37,15 @@ jobs:
 
       - name: Deploy
         env:
-          GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
+          ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }}
         run: |
-          eval $(ssh-agent -s)
-          ssh-add ~/.ssh/id_rsa
+          mkdir -p ~/.ssh/
+          echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
+          chmod 700 ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.email "sdauwangzh@163.com"
+          git config --global user.name "Joe"
           hexo clean
           hexo generate
           hexo deploy
